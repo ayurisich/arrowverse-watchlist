@@ -17,7 +17,10 @@ body.dark-mode {
 }
 
 .app {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Navbar */
@@ -32,6 +35,10 @@ body.dark-mode {
 
 .dark-mode .navbar {
   border-color: #444;
+}
+
+.dark-mode .controls-wrap {
+  background: #2a2a2a;
 }
 
 .navbar-brand {
@@ -62,6 +69,8 @@ body.dark-mode {
 /* Controls */
 .controls-wrap {
   padding: 12px 16px 0;
+  background: #fff;
+  z-index: 1;
 }
 
 .filter-row {
@@ -200,6 +209,8 @@ body.dark-mode {
 
 /* Table */
 .table-wrap {
+  flex: 1;
+  overflow-y: auto;
   overflow-x: auto;
   padding: 0 24px;
 }
