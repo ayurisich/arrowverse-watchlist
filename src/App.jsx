@@ -45,7 +45,6 @@ function saveWatched(set) {
 
 export default function App() {
   const [excludedSeries, setExcludedSeries] = useState(new Set())
-  const [newestFirst, setNewestFirst] = useState(false)
   const [colorEnabled, setColorEnabled] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
   const [watched, setWatched] = useState(loadWatched)
@@ -76,12 +75,14 @@ export default function App() {
   }, [])
 
   const markAllWatched = useCallback(() => {
+    if (!window.confirm('Mark all episodes as watched?')) return
     const allNums = new Set(episodesData.map(e => e.num))
     saveWatched(allNums)
     setWatched(allNums)
   }, [])
 
   const clearWatched = useCallback(() => {
+    if (!window.confirm('Clear all watched progress?')) return
     saveWatched(new Set())
     setWatched(new Set())
   }, [])
@@ -92,9 +93,8 @@ export default function App() {
       if (showOnlyUnwatched && watched.has(ep.num)) return false
       return true
     })
-    if (newestFirst) list = [...list].reverse()
     return list
-  }, [excludedSeries, newestFirst, showOnlyUnwatched, watched])
+  }, [excludedSeries, showOnlyUnwatched, watched])
 
   const watchedVisible = filtered.filter(ep => watched.has(ep.num)).length
   const pct = filtered.length > 0 ? Math.round((watchedVisible / filtered.length) * 100) : 0
@@ -127,10 +127,6 @@ export default function App() {
 
         <div className="toggle-row">
           <button className="toggle-link" onClick={() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' })}>END</button>
-          <span className="sep">|</span>
-          <button className="toggle-link" onClick={() => setNewestFirst(v => !v)}>
-            {newestFirst ? 'OLDEST FIRST' : 'NEWEST FIRST'}
-          </button>
           <span className="sep">|</span>
           <button className="toggle-link" onClick={() => setColorEnabled(v => !v)}>
             {colorEnabled ? 'DISABLE COLOR' : 'ENABLE COLOR'}
