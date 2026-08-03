@@ -55,6 +55,13 @@ export default function App() {
     document.body.classList.toggle('dark-mode', darkMode)
   }, [darkMode])
 
+  useEffect(() => {
+    if (watched.size === 0) return
+    const maxNum = Math.max(...watched)
+    const row = document.querySelector(`tr[data-num="${maxNum}"]`)
+    row?.scrollIntoView({ block: 'center' })
+  }, [])
+
   const toggleExclude = useCallback((series) => {
     setExcludedSeries(prev => {
       const next = new Set(prev)
@@ -171,6 +178,7 @@ export default function App() {
               return (
                 <tr
                   key={ep.num}
+                  data-num={ep.num}
                   className={`episode${colorEnabled ? ` ${cls}` : ''}${isWatched ? ' is-watched' : ''}`}
                 >
                   <td className="col-num">{ep.num}</td>
