@@ -45,8 +45,6 @@ function saveWatched(set) {
 
 export default function App() {
   const [excludedSeries, setExcludedSeries] = useState(new Set())
-  const [fromDate, setFromDate] = useState('')
-  const [toDate, setToDate] = useState('')
   const [newestFirst, setNewestFirst] = useState(false)
   const [colorEnabled, setColorEnabled] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
@@ -91,14 +89,12 @@ export default function App() {
   const filtered = useMemo(() => {
     let list = episodesData.filter(ep => {
       if (excludedSeries.has(ep.series)) return false
-      if (fromDate && new Date(ep.airDate) < new Date(fromDate)) return false
-      if (toDate && new Date(ep.airDate) > new Date(toDate)) return false
       if (showOnlyUnwatched && watched.has(ep.num)) return false
       return true
     })
     if (newestFirst) list = [...list].reverse()
     return list
-  }, [excludedSeries, fromDate, toDate, newestFirst, showOnlyUnwatched, watched])
+  }, [excludedSeries, newestFirst, showOnlyUnwatched, watched])
 
   const watchedVisible = filtered.filter(ep => watched.has(ep.num)).length
   const pct = filtered.length > 0 ? Math.round((watchedVisible / filtered.length) * 100) : 0
@@ -126,25 +122,6 @@ export default function App() {
                 {s}
               </button>
             ))}
-          </div>
-          <div className="date-filter">
-            <input
-              type="date"
-              className={`date-input${darkMode ? ' dark-input' : ''}`}
-              value={fromDate}
-              onChange={e => setFromDate(e.target.value)}
-              aria-label="From date"
-            />
-            <input
-              type="date"
-              className={`date-input${darkMode ? ' dark-input' : ''}`}
-              value={toDate}
-              onChange={e => setToDate(e.target.value)}
-              aria-label="To date"
-            />
-            {(fromDate || toDate) && (
-              <button className="clear-dates-btn" onClick={() => { setFromDate(''); setToDate('') }}>✕</button>
-            )}
           </div>
         </div>
 

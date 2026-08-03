@@ -96,41 +96,6 @@ body.dark-mode {
   text-decoration: line-through;
 }
 
-.date-filter {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.date-input {
-  padding: 4px 8px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  background: #fff;
-  color: #212529;
-}
-
-.date-input.dark-input {
-  background: #000;
-  color: #d3d3d3;
-  border-color: #555;
-}
-
-.clear-dates-btn {
-  background: none;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 3px 7px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.clear-dates-btn:hover {
-  background: #f0f0f0;
-}
 
 /* Toggle row */
 .toggle-row {
