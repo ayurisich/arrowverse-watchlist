@@ -49,7 +49,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false)
   const [watched, setWatched] = useState(loadWatched)
   const [showOnlyUnwatched, setShowOnlyUnwatched] = useState(false)
-  const bottomRef = useRef(null)
+  const tableWrapRef = useRef(null)
 
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode)
@@ -107,7 +107,7 @@ export default function App() {
   const pct = filtered.length > 0 ? Math.round((watchedVisible / filtered.length) * 100) : 0
 
   return (
-    <div className={`app${darkMode ? ' dark' : ''}`}>
+    <div className="app">
       <nav className="navbar">
         <span className="navbar-brand">Arrowverse Episode Order</span>
         <div className="navbar-links">
@@ -133,7 +133,7 @@ export default function App() {
         </div>
 
         <div className="toggle-row">
-          <button className="toggle-link" onClick={() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' })}>END</button>
+          <button className="toggle-link" onClick={() => { tableWrapRef.current.scrollTop = tableWrapRef.current.scrollHeight }}>END</button>
           <span className="sep">|</span>
           <button className="toggle-link" onClick={() => setColorEnabled(v => !v)}>
             {colorEnabled ? 'DISABLE COLOR' : 'ENABLE COLOR'}
@@ -160,7 +160,7 @@ export default function App() {
         </div>
       </div>
 
-      <div className="table-wrap">
+      <div className="table-wrap" ref={tableWrapRef}>
         <table id="episode-list" className="ep-table">
           <thead>
             <tr>
@@ -199,7 +199,6 @@ export default function App() {
           </tbody>
         </table>
       </div>
-      <div ref={bottomRef} />
     </div>
   )
 }
