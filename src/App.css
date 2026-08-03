@@ -313,7 +313,6 @@ body.dark-mode {
 .col-series { width: 200px; }
 .col-ep { width: 76px; white-space: nowrap; }
 .col-name { }
-.col-date { width: 160px; white-space: nowrap; }
 .col-source { width: 56px; text-align: center; }
 
 .col-source a {
