@@ -201,6 +201,7 @@ body.dark-mode {
 /* Table */
 .table-wrap {
   overflow-x: auto;
+  padding: 0 24px;
 }
 
 .ep-table {
