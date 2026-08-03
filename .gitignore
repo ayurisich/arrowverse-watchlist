@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-.playwright-mcp
+
 .claude
+.superpowers
+.playwright-mcp
 verification-screenshot.png
