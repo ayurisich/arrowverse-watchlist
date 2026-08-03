@@ -313,12 +313,6 @@ body.dark-mode {
 .col-series { width: 200px; }
 .col-ep { width: 76px; white-space: nowrap; }
 .col-name { }
-.col-source { width: 56px; text-align: center; }
-
-.col-source a {
-  text-decoration: none;
-  font-size: 1rem;
-}
 
 /* Checkbox */
 .ep-table input[type="checkbox"] {
@@ -326,9 +320,4 @@ body.dark-mode {
   width: 15px;
   height: 15px;
   accent-color: #198754;
-}
-
-/* Dark mode table links */
-.dark-mode #episode-list td a {
-  color: #d3d3d3;
 }

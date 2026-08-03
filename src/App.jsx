@@ -189,7 +189,6 @@ export default function App() {
               <th className="col-series">Series</th>
               <th className="col-ep">Episode</th>
               <th className="col-name">Name</th>
-              <th className="col-source">Source</th>
             </tr>
           </thead>
           <tbody>
@@ -213,11 +212,6 @@ export default function App() {
                   <td className="col-series">{ep.series}</td>
                   <td className="col-ep">{ep.episode}</td>
                   <td className="col-name">{ep.name}</td>
-                  <td className="col-source">
-                    {ep.sourceUrl ? (
-                      <a href={ep.sourceUrl} target="_blank" rel="noreferrer" title="Source">🔗</a>
-                    ) : null}
-                  </td>
                 </tr>
               )
             })}
