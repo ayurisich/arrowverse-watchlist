@@ -26,5 +26,6 @@ dist-ssr
 
 .claude
 .superpowers
+docs
 .playwright-mcp
 *.png
