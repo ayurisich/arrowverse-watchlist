@@ -43,8 +43,21 @@ function saveWatched(set) {
   localStorage.setItem('arrowverse-watched', JSON.stringify([...set]))
 }
 
+function loadExcluded() {
+  try {
+    const raw = localStorage.getItem('arrowverse-excluded')
+    return raw ? new Set(JSON.parse(raw)) : new Set()
+  } catch {
+    return new Set()
+  }
+}
+
+function saveExcluded(set) {
+  localStorage.setItem('arrowverse-excluded', JSON.stringify([...set]))
+}
+
 export default function App() {
-  const [excludedSeries, setExcludedSeries] = useState(new Set())
+  const [excludedSeries, setExcludedSeries] = useState(loadExcluded)
   const [colorEnabled, setColorEnabled] = useState(true)
   const [darkMode, setDarkMode] = useState(false)
   const [watched, setWatched] = useState(loadWatched)
@@ -67,6 +80,7 @@ export default function App() {
       const next = new Set(prev)
       if (next.has(series)) next.delete(series)
       else next.add(series)
+      saveExcluded(next)
       return next
     })
   }, [])
