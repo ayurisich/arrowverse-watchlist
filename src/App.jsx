@@ -66,14 +66,9 @@ function saveExcluded(set) {
 export default function App() {
   const [excludedSeries, setExcludedSeries] = useState(loadExcluded)
   const [colorEnabled, setColorEnabled] = useState(true)
-  const [darkMode, setDarkMode] = useState(false)
   const [watched, setWatched] = useState(loadWatched)
   const [showOnlyUnwatched, setShowOnlyUnwatched] = useState(false)
   const tableWrapRef = useRef(null)
-
-  useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode)
-  }, [darkMode])
 
   useEffect(() => {
     if (watched.size === 0) return
@@ -159,11 +154,6 @@ export default function App() {
           <button className="toggle-link" onClick={() => setColorEnabled(v => !v)}>
             {colorEnabled ? 'DISABLE COLOR' : 'ENABLE COLOR'}
           </button>
-          <span className="sep">|</span>
-          <button className="toggle-link" onClick={() => setDarkMode(v => !v)}>
-            TOGGLE DARK MODE
-          </button>
-          <span className="sep">|</span>
           <button className="toggle-link" onClick={() => setShowOnlyUnwatched(v => !v)}>
             {showOnlyUnwatched ? 'SHOW ALL' : 'HIDE WATCHED'}
           </button>
