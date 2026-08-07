@@ -22,8 +22,8 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  height: 54px;
+  padding: 0 40px;
+  height: 58px;
   background: #0e0e12;
   border-bottom: 1px solid #1e1e28;
   flex-shrink: 0;
@@ -61,7 +61,7 @@ body {
 .controls-wrap {
   background: #13131a;
   border-bottom: 1px solid #1e1e28;
-  padding: 12px 24px 10px;
+  padding: 14px 40px 12px;
   flex-shrink: 0;
 }
 
@@ -206,11 +206,13 @@ body {
   flex: 1;
   overflow-y: auto;
   overflow-x: auto;
+  padding: 10px 40px 24px;
 }
 
 .ep-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 5px;
 }
 
 .ep-table thead {
@@ -220,56 +222,64 @@ body {
 }
 
 .ep-table thead tr {
-  background: #13131a;
-  border-bottom: 1px solid #1e1e28;
+  background: transparent;
 }
 
 .ep-table th {
-  padding: 10px 12px;
+  padding: 6px 14px 10px;
   text-align: left;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #4b5563;
+  color: #3d3d50;
   white-space: nowrap;
+  background: #0e0e12;
 }
 
 .ep-table td {
-  padding: 0 12px;
-  height: 42px;
+  padding: 0 14px;
+  height: 52px;
   vertical-align: middle;
-  border-bottom: 1px solid #1a1a22;
   color: #d1d5db;
   font-size: 0.875rem;
+  background: #16161e;
 }
 
-/* Row accent: left border colored by series */
-.episode {
+/* Rounded row ends */
+.ep-table tbody tr td:first-child {
+  border-radius: 8px 0 0 8px;
   border-left: 3px solid transparent;
-  transition: background 0.1s;
 }
 
-.episode:hover {
-  background: rgba(255,255,255,0.03);
+.ep-table tbody tr td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.episode {
+  transition: background 0.12s;
+}
+
+.episode:hover td {
+  background: #1c1c28;
 }
 
 .episode.is-watched {
   opacity: 0.28;
 }
 
-/* Series accent colors (left border) */
-.arrow            { border-left-color: #2db52d; }
-.flash            { border-left-color: #e84040; }
-.legends          { border-left-color: #2dc5c5; }
-.supergirl        { border-left-color: #3db8e8; }
-.constantine      { border-left-color: #f07340; }
-.vixen            { border-left-color: #9b6bff; }
-.freedom-fighters { border-left-color: #d4c063; }
-.batwoman         { border-left-color: #cc6bcc; }
-.black-lightning  { border-left-color: #9a9590; }
-.stargirl         { border-left-color: #5a8fff; }
-.superman-and-lois{ border-left-color: #60a8c0; }
+/* Series accent colors on left edge of first cell */
+.arrow            td:first-child { border-left-color: #2db52d; }
+.flash            td:first-child { border-left-color: #e84040; }
+.legends          td:first-child { border-left-color: #2dc5c5; }
+.supergirl        td:first-child { border-left-color: #3db8e8; }
+.constantine      td:first-child { border-left-color: #f07340; }
+.vixen            td:first-child { border-left-color: #9b6bff; }
+.freedom-fighters td:first-child { border-left-color: #d4c063; }
+.batwoman         td:first-child { border-left-color: #cc6bcc; }
+.black-lightning  td:first-child { border-left-color: #9a9590; }
+.stargirl         td:first-child { border-left-color: #5a8fff; }
+.superman-and-lois td:first-child { border-left-color: #60a8c0; }
 
 /* ── Columns ─────────────────────────────────────────── */
 .col-num     { width: 48px; text-align: center; color: #4b5563; font-size: 0.78rem; }
