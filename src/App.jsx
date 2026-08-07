@@ -119,8 +119,12 @@ export default function App() {
     return list
   }, [excludedSeries, showOnlyUnwatched, watched])
 
-  const watchedVisible = filtered.filter(ep => watched.has(ep.num)).length
-  const pct = filtered.length > 0 ? Math.round((watchedVisible / filtered.length) * 100) : 0
+  const progressBase = useMemo(() =>
+    episodesData.filter(ep => !excludedSeries.has(ep.series)),
+    [excludedSeries]
+  )
+  const watchedCount = progressBase.filter(ep => watched.has(ep.num)).length
+  const pct = progressBase.length > 0 ? Math.round((watchedCount / progressBase.length) * 100) : 0
 
   return (
     <div className="app">
@@ -163,7 +167,7 @@ export default function App() {
           <div className="progress-track">
             <div className="progress-fill" style={{ width: `${pct}%` }} />
           </div>
-          <span className="progress-label">{watchedVisible} / {filtered.length} watched ({pct}%)</span>
+          <span className="progress-label">{watchedCount} / {progressBase.length} watched ({pct}%)</span>
           <div className="progress-actions">
             <button className="small-btn" onClick={markAllWatched}>Mark all watched</button>
             <button className="small-btn" onClick={clearWatched}>Clear all</button>
