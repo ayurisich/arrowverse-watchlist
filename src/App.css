@@ -290,6 +290,20 @@ body.dark-mode {
 .col-series { width: 200px; }
 .col-ep { width: 76px; white-space: nowrap; }
 .col-name { }
+.col-stream { width: 48px; text-align: center; }
+
+.stream-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: cover;
+  vertical-align: middle;
+  transition: opacity 0.15s;
+}
+
+.stream-icon:hover {
+  opacity: 0.8;
+}
 
 /* Checkbox */
 .ep-table input[type="checkbox"] {

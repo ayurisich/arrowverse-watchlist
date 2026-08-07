@@ -1,6 +1,13 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import episodesData from './episodes.json'
+import hbomaxIcon from './assets/hbomax.png'
+import netflixIcon from './assets/netflix.png'
 import './App.css'
+
+const STREAMING = {
+  'Arrow': { url: 'https://play.hbomax.com/show/11fe02cd-fe8f-4a71-bb07-3f649ff6df36', icon: hbomaxIcon, label: 'HBO Max' },
+  'The Flash': { url: 'https://www.netflix.com/browse?jbv=80027042', icon: netflixIcon, label: 'Netflix' },
+}
 
 const SERIES_LIST = [
   'Arrow',
@@ -183,12 +190,14 @@ export default function App() {
               <th className="col-series">Series</th>
               <th className="col-ep">Episode</th>
               <th className="col-name">Name</th>
+              <th className="col-stream">Watch</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((ep) => {
               const cls = SERIES_CLASS[ep.series] || ''
               const isWatched = watched.has(ep.num)
+              const streaming = STREAMING[ep.series]
               return (
                 <tr
                   key={ep.num}
@@ -207,6 +216,13 @@ export default function App() {
                   <td className="col-series">{ep.series}</td>
                   <td className="col-ep">{ep.episode}</td>
                   <td className="col-name">{ep.name}</td>
+                  <td className="col-stream">
+                    {streaming && (
+                      <a href={streaming.url} target="_blank" rel="noreferrer" title={`Watch on ${streaming.label}`}>
+                        <img src={streaming.icon} alt={streaming.label} className="stream-icon" />
+                      </a>
+                    )}
+                  </td>
                 </tr>
               )
             })}
