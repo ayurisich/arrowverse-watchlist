@@ -249,7 +249,7 @@ body {
 /* Rounded row ends */
 .ep-table tbody tr td:first-child {
   border-radius: 8px 0 0 8px;
-  border-left: 3px solid transparent;
+  border-left: 5px solid transparent;
 }
 
 .ep-table tbody tr td:last-child {
@@ -268,18 +268,18 @@ body {
   opacity: 0.28;
 }
 
-/* Series accent colors on left edge of first cell */
-.arrow            td:first-child { border-left-color: #2db52d; }
-.flash            td:first-child { border-left-color: #e84040; }
-.legends          td:first-child { border-left-color: #2dc5c5; }
-.supergirl        td:first-child { border-left-color: #3db8e8; }
-.constantine      td:first-child { border-left-color: #f07340; }
-.vixen            td:first-child { border-left-color: #9b6bff; }
-.freedom-fighters td:first-child { border-left-color: #d4c063; }
-.batwoman         td:first-child { border-left-color: #cc6bcc; }
-.black-lightning  td:first-child { border-left-color: #9a9590; }
-.stargirl         td:first-child { border-left-color: #5a8fff; }
-.superman-and-lois td:first-child { border-left-color: #60a8c0; }
+/* Series accent colors — prefixed to win specificity over the base rule */
+.ep-table .arrow            td:first-child { border-left-color: #3ddc3d; }
+.ep-table .flash            td:first-child { border-left-color: #ff4545; }
+.ep-table .legends          td:first-child { border-left-color: #00e5e5; }
+.ep-table .supergirl        td:first-child { border-left-color: #38caff; }
+.ep-table .constantine      td:first-child { border-left-color: #ff7a42; }
+.ep-table .vixen            td:first-child { border-left-color: #a855f7; }
+.ep-table .freedom-fighters td:first-child { border-left-color: #e8d060; }
+.ep-table .batwoman         td:first-child { border-left-color: #e060e0; }
+.ep-table .black-lightning  td:first-child { border-left-color: #b0aaa5; }
+.ep-table .stargirl         td:first-child { border-left-color: #6699ff; }
+.ep-table .superman-and-lois td:first-child { border-left-color: #5cc8e8; }
 
 /* ── Columns ─────────────────────────────────────────── */
 .col-num     { width: 48px; text-align: center; color: #4b5563; font-size: 0.78rem; }
